@@ -1,4 +1,4 @@
-### Hi there 👋
+### Hi there! I am currently working on a portfolio site.
 
 <!--
 **CMY-illust/cmy-illust** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
