@@ -1,0 +1,344 @@
+
+		  * {
+		  	/*into the matrix!*/
+		  	margin: 0;
+		  	padding: 0;
+		  	list-style-type: none;
+		  	background-color: teal;
+		  	color: white;
+		  }
+
+		  /*Defaults for mobile*/
+
+		  body {
+		  	  /*font-family:'Trebuchet MS', sans-serif;*/
+		  	  font-family: 'Alegreya Sans SC';
+		      position: relative;
+		      /*background-color:#2b1622;*/
+		      top:60px;
+		  }
+
+		  h3 {
+		  	font-size: 40px;
+		  	text-align: center;
+		  	background-color: black;
+		  }
+
+		  h4 {
+		  	text-align: center;
+		  	font-size: 25px;
+		  }
+
+		  header {
+          	width: auto;
+		  	margin: 10px;
+		  	height: 15vh;
+		  	text-align: center;
+		  	padding-bottom: 3vh;
+		  }
+
+		  header img {
+            height: 10vh;
+            image-rendering: auto;
+		  }
+
+		  header h4, header h1 , header p{
+		  	max-width: 400px;
+		  	margin: 0 auto;
+          }
+
+          header p {
+		  	border-radius: 20px;
+		  	text-align: center;
+          }
+
+		  p {
+          	margin: 5px;
+          	font-size: 20px;
+          }
+
+    	  img {
+  			image-rendering: pixelated;
+    	  }
+
+    	  a {
+    	  	text-decoration: none;
+    	  }
+
+		  /*#region NavBar*/
+		  nav {
+		  	z-index: 5;
+        	/*opacity: 0.9;*/
+            top:0;
+            width: 100%;
+            font-size: 18px;
+            position: fixed;
+            background-color: rgb(0,108,108);
+    	  }
+
+    	  nav ul {
+            display: grid;
+            grid-template-columns:auto auto auto auto;
+            grid-template-rows: 50px;
+            float: right;
+            margin-right: 15px;
+            align-items: center;
+            background-color: rgb(0,108,108);
+          }
+          
+          nav ul li {
+            text-align: center;
+            padding: 10px 10px;
+            position: relative;
+            background-color: rgb(0,108,108);
+          }
+
+          nav ul li:hover {
+            cursor: pointer;
+          }
+
+          nav ul li:hover a{
+            color: orange;
+          }
+
+          nav ul li a {
+            color:  white;
+            text-decoration: none;
+            background-color: rgb(0,108,108);
+          }
+
+          .illus_header {
+          	position: relative;
+          }
+
+		  .parallax { 
+			/* Set a specific height */
+			height: 30vh; 
+			margin: 10px;
+			border-radius: 25px;
+
+			/* Create the parallax scrolling effect */
+			background-attachment: fixed;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			opacity: 80%;
+		  }
+
+		  .parallax_sp {
+		  	/* Set a specific height */
+			height: 30vh; 
+			margin: 10px;
+			border-radius: 25px;
+
+			/* Create the parallax scrolling effect */
+			background-attachment: fixed;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			opacity: 40%;
+		  }
+
+		  	/*text on the image used as parallax*/
+		  .onImage {
+		  	position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			padding: 10px;
+			background-color: transparent;
+		}
+
+		  .section_header {
+          	width: auto;
+		  	margin: 2px .5%;
+		  	padding-top: 5px;
+          }
+
+          .Games_container {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-rows: 3fr 1fr;
+		  }
+
+		  .info p{
+		  	padding: 5%;
+		  }
+
+		  .image_container {
+		  	max-width: 50vh;
+			position: relative;
+			padding: 1%;
+			float: left;
+		  }
+
+		   .Games_container .image_container {
+		  	max-width: 50vh;
+			position: relative;
+			padding: 1%;
+			grid-column: 1/2;
+		  }
+
+		   .Games_container .info {
+		  	grid-column: 2/4;
+		  }
+
+		  /*controls all images that can lead to gamesites*/
+		  .game_image {
+  			  opacity: 1;
+			  display: block;
+			  width: 100%;
+			  height: auto;
+			  transition: .5s ease;
+			  backface-visibility: hidden;	  
+			  border-radius: 10px;
+		    }
+
+		  .overlay {
+			  transition: .5s ease;
+			  opacity: 1;
+			  position: absolute;
+			  top: 50%;
+			  left: 50%;
+			  transform: translate(-50%, -50%);
+			  -ms-transform: translate(-50%, -50%);
+			  text-align: center;
+			}
+
+		  .image_container:hover .game_image {
+			  opacity: .5;
+		  } 
+
+		   .image_container:hover .overlay {
+			  opacity: 1;
+		  }
+
+		  .image:active {
+		  	color: #f5f0eb;
+		  }
+
+		  /*audio*/
+
+		  .music li {
+		  	text-align: center;
+		  }
+
+		  /*Digital illustration section*/
+		  .digi_collection {
+		  	display: grid;
+		  	grid-template-columns: auto;
+			grid-template-rows: auto ;
+		  }
+
+		  .digi_collection img {
+		  	width: 218px;
+		  	height: 218px;
+		  	float: left;
+		  	object-fit: cover;
+		  	transition: .5s ease;
+		  }
+
+		  .digi_collection img:hover {
+		  	cursor: pointer;
+		  }
+
+		  /*.digi_collection img:active/*.expanded*//*{
+		  /*	width: 90vh;
+		  	height: auto;
+		  	object-fit: fill;
+		  	-webkit-transform:scale(1);
+    		transform:scale(1);
+		  }
+		  */
+
+		  .clearfix {
+          	clear: both;
+          }
+
+          /*Animation section*/
+
+          .anim_header {
+          	position: relative;
+          }
+
+          .anim_vid {
+          	text-align: center;
+          }
+
+          .video_container {
+          	position:relative;
+			padding-bottom:56.25%;
+			padding-top:30px;
+			margin: 10vh;
+			height:0;
+          }
+
+          .video_container iframe, .video-container object, .video-container embed {
+			position:absolute;
+			top:0;
+			left:0;
+			width:100%;
+			height:100%;
+		  }
+
+          /*about section*/
+          .about_section {
+          	display: grid;
+          	grid-template-columns: 1fr 1fr;
+          	padding-top: 10vh;
+          }
+
+          .about_img {
+          	text-align: center;
+          }
+
+          .about_text {
+          	float: left;
+          	margin-top: 20px;
+          	margin-right: 30px;
+          }
+
+          .about_text p {
+          	background-color: #109090;
+          	padding: 10px;
+          }
+
+          .contact {
+          	text-align: center;
+          	margin-top: 5vh;
+          }
+
+          .contact a:hover {
+            cursor: pointer;
+            color: orange;
+          }
+
+          /*media query for phones*/
+          @media only screen  and (max-width : 720px){
+          	/*about section*/
+          	.about_section {
+          	display: inline;
+          }
+
+          	.about_text {
+          	text-align: center;
+          	margin: 30px;
+          }
+
+          /*games section*/
+
+          .Games_container {
+			display: inline;
+			}
+
+		  /*Anim reel*/
+
+		  .video_container {
+          	position:relative;
+			padding-bottom:56.25%;
+			padding-top:30px;
+			margin: 1vh;
+			height:0;
+          }
+
+          }
