@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<head>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+  <script src="./DnDAnatomy_files/Confetti.js"></script>
+  <script type="text/javascript">
+
+    var correctCards = 0;
+    $( init );
+
+    function makeConfetti(){
+      console.log("all correct!");
+      dopoof();
+    }
+
+    function init() {
+
+      // Hide the success message
+      $('#successMessage').hide();
+
+      // Reset the game
+      correctCards = 0;
+      $('#cardPile').html( '' );
+      $('#cardSlots').html( '' );
+
+      // Create the pile of shuffled cards
+      var numbers = [ 'frontal crest', 'cribriform plate of ethmoid bone', 'olfactory foramen', 'orbital plate of frontal bone', 'lesser wing of sphenoid bone', 'anterior clinoid process', 
+      'hypophysial fossa', 'greater wing of sphenoid bone', 'temporal bone', 'foramen ovale', 'foramen lacerum','foramen spinosum','petrous part of temporal bone','basiocciput'
+      ,'foramen magnum', 'jugular foramen', 'internal occipital crest', 'internal occipital protuberance'  ];
+      numbers.sort( function() { return Math.random() - .5 } );
+
+      for ( var i=0; i<18; i++ ) {
+        $('<div>' + numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'card').appendTo( '#cardPile' ).draggable( {
+          containment: '#content',
+          stack: '#cardPile div',
+          cursor: 'move',
+          revert: true
+        } );
+      }
+      // Create the card slots: sequence in list matters for matching with number cards
+      var words = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 ];
+      //words.sort( function() { return Math.random() - .5 } ); //randomise 
+
+      for ( var i=1; i<=18; i++ ) {
+        $('<div>' + words[i-1] + '</div>').data( 'number', i ).appendTo( '#cardSlots' ).droppable( {
+          accept: '#cardPile div',
+          hoverClass: 'hovered',
+          drop: handleCardDrop
+        } );
+      }
+
+    }
+
+    function handleCardDrop( event, ui ) {
+     var slotNumber = $(this).data( 'number' ); //numbers
+     var cardName = ui.draggable.data( 'number' ); //names
+     var cardNumber = 0;
+
+     //assgin card nuber based on answer key
+     /*
+      1.frontal crest
+      2.cribriform plate of ethmoid bone
+      3.olfactory foramen 
+      4.orbital plate of frontal bone
+      5.lesser wing of sphenoid bone
+      6.anterior clinoid process
+      7.hypophysial fossa
+      8.greater wing of sphenoid bone
+      9.temporal bone
+      10.foramen ovale
+      11.foramen lacerum
+      12.foramen spinosum
+      13.petrous part of temporal bone
+      14.basiocciput
+      15.foramen magnum
+      16.jugular foramen
+      17.internal occipital crest
+      18.internal occipital protuberance
+      */
+
+     if (cardName == "frontal crest"){
+      cardNumber = 1;
+     }
+     if (cardName == "cribriform plate of ethmoid bone"){
+      cardNumber = 2;
+     }
+     if (cardName == "olfactory foramen"){
+      cardNumber = 3;
+     }
+     if (cardName == "orbital plate of frontal bone"){
+      cardNumber = 4;
+     }
+     if (cardName == "lesser wing of sphenoid bone"){
+      cardNumber = 5;
+     }
+     if (cardName == "anterior clinoid process"){
+      cardNumber = 6;
+     }
+     if (cardName == "hypophysial fossa"){
+      cardNumber = 7;
+     }
+     if (cardName == "greater wing of sphenoid bone"){
+      cardNumber = 8;
+     }
+     if (cardName == "temporal bone"){
+      cardNumber = 9;
+     }
+     if (cardName == "foramen ovale"){
+      cardNumber = 10;
+     }
+     if (cardName == "foramen lacerum"){
+      cardNumber = 11;
+     }
+     if (cardName == "foramen spinosum"){
+      cardNumber = 12;
+     }
+     if (cardName == "petrous part of temporal bone"){
+      cardNumber = 13;
+     }
+     if (cardName == "basiocciput"){
+      cardNumber = 14;
+     }
+     if (cardName == "foramen magnum"){
+      cardNumber = 15;
+     }
+     if (cardName == "jugular foramen"){
+      cardNumber = 16;
+     }
+     if (cardName == "internal occipital crest"){
+      cardNumber = 17;
+     }
+     if (cardName == "internal occipital protuberance"){
+      cardNumber = 18;
+     }
+
+     // If the card was dropped to the correct slot, change the card colour, position it directly
+     // on top of the slot, and prevent it being dragged again
+
+      if ( slotNumber == cardNumber ) {
+        ui.draggable.addClass( 'correct' );
+        ui.draggable.draggable( 'disable' );
+        $(this).droppable( 'disable' );
+        ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
+        ui.draggable.draggable( 'option', 'revert', false );
+        correctCards++;
+      } 
+      
+      // If all the cards have been placed correctly then display a message
+      // and reset the cards for another go
+
+      if ( correctCards == 18 ) {
+        makeConfetti();
+        $('#successMessage').show();
+      }
+    }
+ 
+  </script>
+  <link rel="stylesheet" href="DnDAnatomy_files/style_DnD.css">
+  <style></style>
+</head>
+
+<body>
+  <section class="navbar d-flex navbar-fixed-top">
+    <div class="logo">
+      <small>LKC Medicine digital worksheet</small></a>
+    </div>
+    <nav class="navbar">
+      <ul class="nav">
+        <li class="active"><a href="#">Start</a></li>
+        <li><a href="https://cmy-illust.github.io/DnDAnatomy_pg2.html">Part2</a></li>
+      </ul>
+    </nav>
+    <div class= "progressbar">
+        <div class="container" style="width:50%">
+          <div class="prog">50%</div>
+        </div>
+      </div>
+  </section>
+
+  <div id="DnD">
+    <div id="questionImg">
+      <img src="Picture1.png">
+    </div>
+    <div id="contentholder">
+      <div id="content">
+
+        <div id="cardPile"> </div>
+        <div id="cardSlots"> </div>
+
+      </div> 
+    </div>
+  </div>
+
+  <div id="successMessage">
+    <h2>You did it!</h2>
+    <button onclick="init()">Play Again</button>
+    <p><a href="https://next.html"> Next Question</a></p> <!--Next webpage-->
+  </div>
+
+  <div id="clearfix"></div>
+
+</body>
+</html>

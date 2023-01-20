@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<head>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+  <script src="./DnDAnatomy_files/Confetti.js"></script>
+  <script type="text/javascript">
+
+    var correctAnswers = 0;
+    var allcorrect = false;
+    var isEmpty = 0;
+    $( init );
+
+    function makeConfetti(){
+      console.log("all correct!");
+      dopoof();
+    }
+
+    function init() {
+      // Hide the success message
+      $('#successMessage2').hide();
+
+      //Hide feedbacks
+      $('#rightFeedback1').hide();
+      $('#wrongFeedback1').hide();
+      $('#rightFeedback2').hide();
+      $('#wrongFeedback2').hide();
+      $('#rightFeedback3').hide();
+      $('#wrongFeedback3').hide();
+      $('#rightFeedback4').hide();
+      $('#wrongFeedback4').hide();
+      $('#rightFeedback5').hide();
+      $('#wrongFeedback5').hide();
+      $('#rightFeedback6').hide();
+      $('#wrongFeedback6').hide();
+
+      //reset vlue
+      isEmpty = 0;
+      correctAnswers = 0;
+
+      // Reset questionaire
+      document.getElementById('q1').value = '';
+      document.getElementById('q2').value = '';
+      document.getElementById('q3').value = '';
+      document.getElementById('q4').value = '';
+      document.getElementById('q5').value = '';
+      document.getElementById('q6').value = '';
+
+    }
+
+    function validateForm() {
+      var form = document.getElementById("StructureQuestions");
+      var ans1 = form.q1.value;
+      var ans2 = form.q2.value;
+      var ans3 = form.q3.value;
+      var ans4 = form.q4.value;
+      var ans5 = form.q5.value;
+      var ans6 = form.q6.value;
+      
+      correctAnswers = 0;
+      isEmpty =0;
+
+      //Hide feedbacks
+      $('#rightFeedback1').hide();
+      $('#wrongFeedback1').hide();
+      $('#rightFeedback2').hide();
+      $('#wrongFeedback2').hide();
+      $('#rightFeedback3').hide();
+      $('#wrongFeedback3').hide();
+      $('#rightFeedback4').hide();
+      $('#wrongFeedback4').hide();
+      $('#rightFeedback5').hide();
+      $('#wrongFeedback5').hide();
+      $('#rightFeedback6').hide();
+      $('#wrongFeedback6').hide();
+
+      if (ans1 == ""||ans2 == ""||ans3 == ""||ans4 == ""||ans5 == ""||ans6 == "") {
+        isEmpty++;
+        //return false;
+      }
+      if (isEmpty >0) {
+        alert("Please fill in all the blanks.");
+      }
+
+      if ((ans1 == "olfactory nerves")) {
+        correctAnswers++;
+        $('#rightFeedback1').show();
+      }
+      else {
+        $('#wrongFeedback1').show();
+      }
+      if (ans2 == "V3") {
+        correctAnswers++;
+        $('#rightFeedback2').show();
+      }
+      else {
+        $('#wrongFeedback2').show();
+      }
+      if (ans3 == "fibrous cartilage") {
+        correctAnswers++;
+        $('#rightFeedback3').show();
+      }
+      else {
+        $('#wrongFeedback3').show();
+      }
+      if (ans4 == "middle meningeal artery") {
+        correctAnswers++;
+        $('#rightFeedback4').show();
+      }
+      else {
+        $('#wrongFeedback4').show();
+      }
+      if ((ans5 =="vertebral artery") || (ans5 == "spinal cord")) {
+        correctAnswers++;
+        $('#rightFeedback5').show();
+      }
+      else {
+        $('#wrongFeedback5').show();
+      }
+      if ((ans6.includes("Internal Jugular Vein")) || (ans5.includes("CNIX")) 
+      || (ans6.includes("CNX")) || (ans5.includes("CNXI"))) {
+        correctAnswers++;
+        $('#rightFeedback6').show();
+      }
+      else {
+        $('#wrongFeedback6').show();
+      }
+      //console.log(correctAnswers);
+      //return false
+      Feedback();
+    }
+
+    function Feedback(){
+      if (correctAnswers == 6){
+        allcorrect = true;
+        $('#successMessage2').show();        
+      }
+      else {
+        console.log("oopsie");
+      }
+
+      if (allcorrect){
+        makeConfetti();
+      }
+    }
+ 
+  </script>
+  <link rel="stylesheet" href="DnDAnatomy_files/style_DnD.css">
+  <style></style>
+</head>
+
+<body>
+  <section class="navbar d-flex navbar-fixed-top">
+    <div class="logo">
+      <small>LKC Medicine digital worksheet</small></a>
+    </div>
+    <nav class="navbar">
+      <ul class="nav">
+        <li><a href="https://cmy-illust.github.io/DnDAnatomy_pg1.html">Start</a></li>
+        <li class="active"><a href="#">Part2</a></li>
+      </ul>
+    </nav>
+    <div class= "progressbar">
+        <div class="container" style="width:100%">
+          <div class="prog">100%</div>
+        </div>
+      </div>
+  </section>
+
+  <div id="questionImg">
+    <img src="Picture1.png">
+  </div>
+
+  <div id="activity2">
+    <h2>What structure pass through each of the following parts? (only need to give one)</h2>
+    <form name="Answer" id="StructureQuestions">
+      <div class="question1">
+        <label for="q1">#03:</label>
+        <input type="text" id="q1" name="q1"><br/>
+      </div>
+      <div id="wrongFeedback1">
+        <h2>Wrong!</h2>
+      </div>
+      <div id="rightFeedback1">
+        <h2>Right!</h2>
+      </div>
+      <div id="clearfix"></div>
+
+      <div class="question1">
+      <label for="q2">#10:</label>
+      <input type="text" id="q2" name="q2"><br/>
+      </div>
+      <div id="wrongFeedback2">
+        <h2>Wrong!</h2>
+      </div>
+      <div id="rightFeedback2">
+        <h2>Right!</h2>
+      </div>
+      <div id="clearfix"></div>
+
+      <div class="question1">
+      <label for="q3">#11:</label>
+      <input type="text" id="q3" name="q3"><br/>
+      </div>
+      <div id="wrongFeedback3">
+        <h2>Wrong!</h2>
+      </div>
+      <div id="rightFeedback3">
+        <h2>Right!</h2>
+      </div>
+      <div id="clearfix"></div>
+
+      <div class="question1">
+      <label for="q4">#12:</label>
+      <input type="text" id="q4" name="q4"><br/>
+      </div>
+      <div id="wrongFeedback4">
+        <h2>Wrong!</h2>
+      </div>
+      <div id="rightFeedback4">
+        <h2>Right!</h2>
+      </div>
+      <div id="clearfix"></div>
+
+      <div class="question1">
+      <label for="q5">#15:</label>
+      <input type="text" id="q5" name="q5"><br/>
+      </div>
+      <div id="wrongFeedback5">
+        <h2>Wrong!</h2>
+      </div>
+      <div id="rightFeedback5">
+        <h2>Right!</h2>
+      </div>
+      <div id="clearfix"></div>
+
+      <div class="question1">
+      <label for="q6">#16:</label>
+      <input type="text" id="q6" name="q6"><br/>
+      </div>
+      <div id="wrongFeedback6">
+        <h2>Wrong!</h2>
+      </div>
+      <div id="rightFeedback6">
+        <h2>Right!</h2>
+      </div>
+      <div id="clearfix"></div>
+      <input type="button" value="Submit" onclick="validateForm()"/>
+    </form>
+
+    <h2>DEBUG Answer key (comma seperates correct answers):</h2>
+    <h3>#03 - olfactory nerves</h3>
+    <h3>#10 - V3</h3>
+    <h3>#11 - fibrous cartilage</h3>
+    <h3>#12 - middle meningeal artery</h3>
+    <h3>#15 - spinal cord, vertebral artery</h3>
+    <h3>#16 - Internal Jugular Vein, CNIX, CNX, CNXI</h3>
+
+    <div id="successMessage2">
+      <h2>You did it! 100% !</h2>
+      <button onclick="init()">Play Again</button>
+    </div>
+  </div>
+  <div id="clearfix"></div>
+
+</body>
+
+</html>
