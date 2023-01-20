@@ -14,7 +14,6 @@
   }
 
   body {
-	animation: .5s ease-out 0s 1 slideInLeft;
 	padding: 0;
 	margin:0;
     width: 100%;
@@ -124,6 +123,10 @@
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	user-select: none;
+  }
+
+.Qcontents {
+	animation: .5s ease-out 0s 1 slideInLeft;
   }
   
   /* Slots for final card positions */
