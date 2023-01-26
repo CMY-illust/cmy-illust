@@ -137,13 +137,13 @@
      // on top of the slot, and prevent it being dragged again
 
       if ( slotNumber == cardNumber ) {
-        //ui.draggable.addClass( 'correct' );
+        ui.draggable.addClass( 'correct' );
         ui.draggable.draggable( 'disable' );
-        ui.draggable.display('none');
         $(this).droppable( 'disable' );
-        //ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
+        $(this).addClass('correct');
+        this.innerHTML = cardNumber+ '. '+cardName;
+        ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
         ui.draggable.draggable( 'option', 'revert', false );
-        $(this).droppable.background( 'green' );
         correctCards++;
       } 
       
