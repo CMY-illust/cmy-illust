@@ -197,9 +197,11 @@
 	box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
   }
   
-  /* Individually coloured cards */
+ /* Individually coloured cards */
   
-  #card.correct { background: green; }
+  #card.correct { display: none; }
+
+  #slot.correct { background: green;}
 
   /* "You did it!" message */
   #successMessage {
