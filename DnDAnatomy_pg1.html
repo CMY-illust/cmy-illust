@@ -139,10 +139,11 @@
       if ( slotNumber == cardNumber ) {
         //ui.draggable.addClass( 'correct' );
         ui.draggable.draggable( 'disable' );
+        ui.draggable.style.display('none');
         $(this).droppable( 'disable' );
         //ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
         ui.draggable.draggable( 'option', 'revert', false );
-        $(this).droppable.background( 'green' );
+        $(this).droppable.style.background( 'green' );
         correctCards++;
       } 
       
