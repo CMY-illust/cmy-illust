@@ -8,6 +8,7 @@
     var correctAnswers = 0;
     var allcorrect = false;
     var isEmpty = 0;
+    showingkey = false;
     $( init );
 
     function makeConfetti(){
@@ -18,6 +19,11 @@
     function init() {
       // Hide the success message
       $('#successMessage2').hide();
+      
+      //Hide answer key
+      $('#answerKey').hide();
+      showingkey = false;
+      $('#keyButton').text('Open Answer Key');
 
       //Hide feedbacks
       $('#rightFeedback1').hide();
@@ -45,6 +51,12 @@
       document.getElementById('q5').value = '';
       document.getElementById('q6').value = '';
 
+    }
+    
+    function CheckAgainstString(a, b) {
+    return typeof a === 'string' && typeof b === 'string'
+        ? a.localeCompare(b, undefined, { sensitivity: 'accent' }) === 0
+        : a === b;
     }
 
     function validateForm() {
@@ -81,43 +93,43 @@
         alert("Please fill in all the blanks.");
       }
 
-      if ((ans1 == "olfactory nerves")) {
+      if (CheckAgainstString(ans1, 'olfactory nerves')) {
         correctAnswers++;
         $('#rightFeedback1').show();
       }
       else {
         $('#wrongFeedback1').show();
       }
-      if (ans2 == "V3") {
+      if (CheckAgainstString(ans2, 'v3')) {
         correctAnswers++;
         $('#rightFeedback2').show();
       }
       else {
         $('#wrongFeedback2').show();
       }
-      if (ans3 == "fibrous cartilage") {
+      if (CheckAgainstString(ans3, 'fibrous cartilage')) {
         correctAnswers++;
         $('#rightFeedback3').show();
       }
       else {
         $('#wrongFeedback3').show();
       }
-      if (ans4 == "middle meningeal artery") {
+      if (CheckAgainstString(ans4, 'middle meningeal artery')) {
         correctAnswers++;
         $('#rightFeedback4').show();
       }
       else {
         $('#wrongFeedback4').show();
       }
-      if ((ans5 =="vertebral artery") || (ans5 == "spinal cord")) {
+      if ((ans5.toLowerCase().includes("vertebral artery")) || (ans5.toLowerCase().includes("spinal cord"))) {
         correctAnswers++;
         $('#rightFeedback5').show();
       }
       else {
         $('#wrongFeedback5').show();
       }
-      if ((ans6.includes("Internal Jugular Vein")) || (ans5.includes("CNIX")) 
-      || (ans6.includes("CNX")) || (ans5.includes("CNXI"))) {
+      if ((ans6.toLowerCase().includes("internal jugular vein")) || (ans6.toLowerCase().includes("cnix")) 
+      || (ans6.toLowerCase().includes("cnx")) || (ans6.toLowerCase().includes("cnxi"))) {
         correctAnswers++;
         $('#rightFeedback6').show();
       }
@@ -135,12 +147,26 @@
         $('#successMessage2').show();        
       }
       else {
-        console.log("oopsie");
+        //console.log("oopsie");
       }
 
       if (allcorrect){
         makeConfetti();
       }
+    }
+    
+    function showAnsKey(){
+      if (showingkey){
+        $('#answerKey').hide();
+        $('#keyButton').text('Open Answer Key');
+        showingkey = false;
+      }
+      else{
+        $('#answerKey').show();
+        $('#keyButton').text('Close Answer Key');
+        showingkey = true;
+      }
+      
     }
  
   </script>
@@ -246,7 +272,9 @@
       <div id="clearfix"></div>
       <input type="button" value="Submit" onclick="validateForm()"/>
     </form>
-
+    
+    <button id="keyButton" onclick="showAnsKey()">Open Answer Key</button>
+    <div id="answerKey">
     <h2>DEBUG Answer key (comma seperates correct answers):</h2>
     <h3>#03 - olfactory nerves</h3>
     <h3>#10 - V3</h3>
@@ -255,6 +283,7 @@
     <h3>#15 - spinal cord, vertebral artery</h3>
     <h3>#16 - Internal Jugular Vein, CNIX, CNX, CNXI</h3>
     </section>
+    </div>
 
     <div id="successMessage2">
       <h2>You did it! 100% !</h2>
