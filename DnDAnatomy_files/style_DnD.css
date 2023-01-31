@@ -203,6 +203,8 @@
 
   #slot.correct { background: green;}
 
+  #cardSlots .correct { color: white;}
+
   /* "You did it!" message */
   #successMessage {
 	position: fixed;
